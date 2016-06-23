@@ -68,12 +68,31 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+            'table' => 'users'
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'roles' => [
+            'driver' => 'eloquent',
+            'model' => App\Role::class,
+            'table' => 'roles'
+        ],
+
+        'role_users' => [
+            'driver' => 'eloquent',
+            'table' => 'role_user'
+        ],
+
+        'permissions' => [
+            'driver' => 'eloquent',
+            'model' => App\Permission::class,
+            'table' => 'permissions'
+        ],
+
+        'permission_roles' => [
+            'driver' => 'eloquent',
+            'table' => 'permission_role'
+        ],
+
     ],
 
     /*
