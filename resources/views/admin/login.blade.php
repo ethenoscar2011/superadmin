@@ -28,52 +28,63 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="login-panel panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">超控制台登录</h3>
-                    </div>
-                    <div class="panel-body">
-                        <form role="form">
-                            <fieldset>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
-                                </div>
-                                <div class="form-group">
-                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
-                                    </label>
-                                </div>
-                                <!-- Change this to a button or input when using this as a form -->
-                                <a href="{{url('/index')}}" class="btn btn-lg btn-success btn-block">登录</a>
-                            </fieldset>
-                        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="login-panel panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">超控制台登录</h3>
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" method="POST" action="{{ url('/login') }}">
+                                {{ csrf_field() }}
+                                <fieldset>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="E-mail" id="email" name="email" type="email" autofocus value="{{ old('email') }}">
+                                        @if ($errors->has('email'))
+                                        <span class="help-block alert alert-warning alert-dismissible fade in" style="padding:8px">
+                                            {{ $errors->first('email') }}
+                                        </span>
+                                        @endif
+                                    </div>
+                                    <div class="form-group">
+                                        <input class="form-control" placeholder="Password" id="password" name="password" type="password" value="">
+                                        @if ($errors->has('password'))
+                                            <span class="help-block alert alert-warning alert-dismissible fade in" style="padding:8px">
+                                                {{ $errors->first('password') }}
+                                            </span>
+                                        @endif
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                        </label>
+                                    </div>
+                                    <!-- Change this to a button or input when using this as a form -->
+                                    <input type="submit" value="登录" class="btn btn-lg btn-success btn-block"/>
+                                </fieldset>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- jQuery -->
-    <script src="{{ asset('/bower_components/jquery/dist/jquery.min.js') }}"></script>
+        <!-- jQuery -->
+        <script src="{{ asset('/bower_components/jquery/dist/jquery.min.js') }}"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="{{ asset('/dist/js/sb-admin-2.js') }}"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="{{ asset('/dist/js/sb-admin-2.js') }}"></script>
 
-</body>
+    </body>
 
-</html>
+    </html>
