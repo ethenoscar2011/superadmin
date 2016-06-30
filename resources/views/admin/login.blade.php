@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                            <input name="remember" type="checkbox" <?php echo empty(old('remember')) ? '' : 'checked'; ?> >Remember Me
                                         </label>
                                     </div>
                                     <!-- Change this to a button or input when using this as a form -->
@@ -81,6 +81,9 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="{{ asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="{{ asset('/bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
 
         <!-- Custom Theme JavaScript -->
         <script src="{{ asset('/dist/js/sb-admin-2.js') }}"></script>
